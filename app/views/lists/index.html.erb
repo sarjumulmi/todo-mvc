@@ -3,7 +3,7 @@
 				<h1>My List</h1>
 				<!-- <input class="new-todo" placeholder="Make a list" autofocus=""> -->
         <%= form_for @list do |f| %>
-          <%= f.text_field :name, :class => 'new-todo', :placeholder => 'Make a list' %>
+						<%= f.text_field :name, :class => 'new-todo', :placeholder => @list.errors[:name][0] || "Make a list.."%>
           <%= f.submit :style => "display: none" %>
         <% end %>
 			</header>
@@ -20,7 +20,7 @@
           <% end %>
         </ul>
 			</section>
-			<footer class="footer" >
+			<!-- <footer class="footer" >
 
-			</footer>
+			</footer> -->
 		</section>

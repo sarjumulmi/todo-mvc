@@ -7,11 +7,19 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @items = @list.items
+    @item = @list.items.build
   end
 
   def create
-    @list = List.create(list_params)
-    redirect_to lists_path
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      @lists = List.all
+      render 'index'
+    end
+
   end
 
   private
