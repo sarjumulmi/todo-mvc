@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :lists do
-    resources :items, only: [:index, :new, :create, :edit, :update]
+    resources :items
   end
 
 
