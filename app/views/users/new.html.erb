@@ -1,0 +1,14 @@
+<section class="todoapp">
+	<header class="header">
+		<h1>SignUp Form</h1>
+    <%= form_for @user do |f| %>
+      <%= f.text_field :email, :class=>"new-todo", :placeholder => "Register with your email!!" %>
+			<%= f.password_field :password, :class=>"new-todo", :placeholder => "Enter your password!!" %>
+			<%= f.password_field :password_confirmation, :class=>"new-todo", :placeholder => "Confirm your password!!" %>
+			<%= f.submit :style => "display: none" %>
+    <% end %>
+	</header>
+
+	<footer class="footer" >
+	</footer>
+</section>

@@ -1,26 +1,30 @@
 <section class="todoapp">
-			<header class="header">
-				<h1>My List</h1>
-				<!-- <input class="new-todo" placeholder="Make a list" autofocus=""> -->
-        <%= form_for @list do |f| %>
-					<%= f.text_field :name, :class => 'new-todo', :placeholder => @list.errors[:name][0] || "Make a list.."%>
-          <%= f.submit :style => "display: none" %>
-        <% end %>
-			</header>
-			<section class="main">
-				<ul class="todo-list">
-          <% @lists.each do |list| %>
-          <li >
-            <div class="view">
-              <!-- <input class="toggle" type="checkbox"> -->
-              <label><%= link_to list.name, list_path(list) %></label>
-              <!-- <button class="destroy"></button> -->
-            </div>
-          </li>
-          <% end %>
-        </ul>
-			</section>
-			<!-- <footer class="footer" >
+	<header class="header">
+		<h1>My List</h1>
+		<!-- <input class="new-todo" placeholder="Make a list" autofocus=""> -->
+    <%= form_for @list do |f| %>
+			<%= f.text_field :name, :class => 'new-todo', :placeholder => @list.errors[:name][0] || "Make a list.."%>
+      <%= f.submit :style => "display: none" %>
+    <% end %>
+	</header>
+	<section class="main">
+		<ul class="todo-list">
+      <% @lists.each do |list| %>
+      <li >
+        <div class="view">
+          <!-- <input class="toggle" type="checkbox"> -->
+          <label><%= link_to list.name, list_path(list) %></label>
+          <!-- <button class="destroy"></button> -->
+        </div>
+      </li>
+      <% end %>
+    </ul>
+	</section>
+			<footer class="footer" >
+			</footer>
+</section>
 
-			</footer> -->
-		</section>
+<footer class="info">
+	<p>You're logged in as <%= current_user.email %></p>
+	<%= link_to "Logout", logout_path %>
+</footer>

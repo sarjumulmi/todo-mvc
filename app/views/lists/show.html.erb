@@ -1,19 +1,22 @@
 <section class="todoapp">
-			<header class="header">
-				<h1><%= @list.name %></h1>
-				<!-- <input class="new-todo" placeholder="Add an item..." autofocus=""> -->
-				<%= form_for @item, :url => list_items_path(@list) do |f| %>
-				<%= f.text_field :description,  :class => 'new-todo', :placeholder => @item.errors[:description][0] || 'Insert new items...' %>
-				<%= f.submit :style => "display: none" %>
+	<header class="header">
+		<h1><%= @list.name %></h1>
+		<!-- <input class="new-todo" placeholder="Add an item..." autofocus=""> -->
+		<%= form_for @item, :url => list_items_path(@list) do |f| %>
+		<%= f.text_field :description,  :class => 'new-todo', :placeholder => @item.errors[:description][0] || 'Insert new items...' %>
+		<%= f.submit :style => "display: none" %>
+		<% end %>
+	</header>
 
-				<% end %>
-			</header>
-			<section class="main">
-
-				<ul class="todo-list">
-          	<%= render :partial=>'items/items_li', :collection => @list.items, :as=>:item %>
-        </ul>
-			</section>
-			<footer class="footer" >
-			</footer>
-		</section>
+	<section class="main">
+		<ul class="todo-list">
+      	<%= render :partial=>'items/items_li', :collection => @list.items, :as=>:item %>
+    </ul>
+	</section>
+	<footer class="footer" >
+	</footer>
+</section>
+<footer class="info">
+	<p>You're logged in as <%= current_user.email %></p>
+	<%= link_to "Logout", logout_path %>
+</footer>
