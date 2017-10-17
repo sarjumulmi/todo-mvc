@@ -5,7 +5,11 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
     @item = @list.items.build(item_params)
     if @item.save
-      redirect_to list_path(@list)
+      respond_to do |format|
+        format.html {redirect_to list_path(@list)}
+        format.json {render :json =>@item}
+      end
+      # redirect_to list_path(@list)
     else
       @items = @list.items
       render 'lists/show'
@@ -22,7 +26,10 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to list_path(@item.list)
+    respond_to do |format|
+      format.html {redirect_to list_path(@item.list)}
+      format.json {render :json => @item}
+    end
   end
 
   private
